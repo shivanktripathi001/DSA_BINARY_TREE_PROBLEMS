@@ -1,4 +1,3 @@
-
 /**
  * Definition for a binary tree node.
  * struct TreeNode {
@@ -12,7 +11,8 @@
  */
 class Solution {
 public:
-    bool isSameTree(TreeNode* p, TreeNode* q) {
+
+     bool isMirror(TreeNode* p, TreeNode* q) {
 
 
         if(!p && !q)return true;
@@ -21,12 +21,17 @@ public:
         if(p && q){
 
 
-            return (p->val == q->val) && isSameTree(p->left ,q->left) 
-            && isSameTree(p->right,q->right);
+            return (p->val == q->val) && isMirror(p->left ,q->right) 
+            && isMirror(p->right,q->left);
 
         }
 
         return false;
+        
+    }
+    bool isSymmetric(TreeNode* root) {
+
+        return isMirror(root->left,root->right);
         
     }
 };
